@@ -17,21 +17,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class StepDef {
+public class StepDef extends BaseClass {
 	
-	WebDriver driver;
-	
-	LoginPage loginpage;
-	
-	AddNewCustomerPage addNew;
-	
-	SearchCustomerPage searchPage;
 
-	public Utils u = new Utils();
 	
-	public String mail = u.generateEmail(); 
-	
-	public String textMail = mail;
+
+
+
 	
 	
 	@Given("User luanch the chrome browser")
@@ -66,7 +58,7 @@ public class StepDef {
 	}
 
 	@Then("Page title should be {string}")
-	public void page_title_should_be(String expectedTitle) {
+	public void page_title_should_be(String expectedTitle) throws InterruptedException {
 		String actualTitle = driver.getTitle();
 
 		if(actualTitle.equals(expectedTitle)) {
@@ -75,6 +67,7 @@ public class StepDef {
 		else {
 			Assert.assertTrue(false);
 		}
+		Thread.sleep(5000);
 	}
 
 
@@ -135,7 +128,7 @@ public class StepDef {
 	@When("User enters customer info")
 	public void user_enters_customer_info() throws InterruptedException {
 		
-		addNew.enterEmail(mail);
+		addNew.enterEmail(genarateEmailId()+"@gmail.com");
 		Thread.sleep(2000);
 		addNew.enterPassword();
 		Thread.sleep(2000);
@@ -173,12 +166,12 @@ public class StepDef {
 		}
 	}
 	
-	///////Search Customer//////
+	///////Search Customer by email//////
 	
 	@When("Enter customer Email")
 	public void enter_customer_email() 
 	{
-		searchPage.enterEmailAdd(textMail);
+		searchPage.enterEmailAdd("victoria_victoria@nopCommerce.com");
 	}
 
 	@Then("Click on search button")
@@ -190,8 +183,8 @@ public class StepDef {
 	@And("User should found Email in the Search table")
 	public void user_should_found_email_in_the_search_table() 
 	{
-	    String expected = textMail;
-	    if(searchPage.searchCustomerByEmail(expected)==true)
+		String expectedEmail = "victoria_victoria@nopCommerce.com";
+	    if(searchPage.searchCustomerByEmail(expectedEmail)==true)
 	    {
 	    	Assert.assertTrue(true);
 	    }
@@ -200,6 +193,11 @@ public class StepDef {
 	    	Assert.assertTrue(false);
 	    }
 	}
+
+
+
+
+
 
 	
 }

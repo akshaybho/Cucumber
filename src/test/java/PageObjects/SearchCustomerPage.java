@@ -31,6 +31,7 @@ public class SearchCustomerPage {
 	
 	@FindBy(xpath = "//table[@id ='customer-grid']//tbody[1]/tr[1]/td")
 	List <WebElement>  tableColoumns;
+
 	
 	//action method to enter email address
 	public void enterEmailAdd(String email)
@@ -43,28 +44,39 @@ public class SearchCustomerPage {
 	{
 		searchBtn.click();
 	}
-	
-	public boolean searchCustomerByEmail(String expectedEmailAdd)
+
+	public boolean searchCustomerByEmail(String email)
 	{
 		boolean found = false;
-		
-		//int ttlRows = tableRows.size();
-		
-		//int ttlCol = tableColoumns.size();
-		
-		
-			WebElement actualEmail = ldriver.findElement(By.xpath("//*[@id=\"customers-grid\"]/tbody/tr[1]/td[2]"));
-			
-			String actualEmailAdd = actualEmail.getText();
-			
-			if(actualEmailAdd.equals(expectedEmailAdd))
+
+		//total no. of rows in a grid
+		int ttlRows = tableRows.size();
+
+
+		//total no. of columns
+		//int ttlColumns = tableColumns.size();
+
+
+
+			WebElement webElementEmail = ldriver.findElement(By.xpath("//*[@id=\"customers-grid\"]/tbody/tr[1]/td[2]"));
+			String actualEmailAdd = webElementEmail.getText();
+			System.out.println(actualEmailAdd);
+
+			if(actualEmailAdd.equals(email))
 			{
-				found = true;
+				found=true;
 			}
-		
+
+
+
+
 		return found;
-		//table[@id ='customer-grid']//tbody[1]/tr["+i+"]/td[2]
+
 	}
+
+
+
+
 	
 	
 }

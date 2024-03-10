@@ -52,7 +52,7 @@ public class AddNewCustomerPage {
 	@FindBy(id = "IsTaxExempt")
 	WebElement checkTax;
 	
-	@FindBy(xpath = "//*[@id=\"customer-info\"]/div[2]/div[9]/div[2]/div")
+	@FindBy(xpath = "//*[@id=\"customer-info\"]/div[2]/div[10]/div[2]/div/div[1]/div/div")
 	WebElement newsLetter;
 
 	@FindBy(xpath = "//li[text()='Your store name']")
