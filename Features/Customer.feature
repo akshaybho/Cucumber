@@ -1,4 +1,4 @@
-Feature: Customer
+Feature: Cus tomer
 
   Background: 
     Given User luanch the chrome browser
@@ -7,7 +7,7 @@ Feature: Customer
     And Click on login
     Then User can view dashboard
 
-    @Sanity
+    @regression
   Scenario: Add new customer
     When User clicks on customer menu
     And Click on customers menu item
@@ -16,16 +16,16 @@ Feature: Customer
     When User enters customer info
     And Click on save button
     Then User can view confirmation message "The new customer has been added successfully."
-    And Close browser
 
-      @regression
+
+      @Sanity
     Scenario: Search Customer by Email
       When User clicks on customer menu
       And Click on customers menu item
     And Enter customer Email
     When Click on search button
     Then User should found Email in the Search table
-      And Close browser
+
 
 
 
