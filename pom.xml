@@ -25,6 +25,11 @@
     <version>4.13.2</version> <!-- Use the appropriate version -->
     <scope>test</scope>
 </dependency>
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>1.10.1</version>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-html -->

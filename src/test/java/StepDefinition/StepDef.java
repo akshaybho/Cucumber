@@ -242,8 +242,8 @@ public class StepDef extends BaseClass {
 	    	Assert.assertTrue(false);
 	    }
 	}
-    @After
-	public void tearDown(Scenario sc) throws IOException {
+    //@After
+	/*public void tearDown(Scenario sc) throws IOException {
 		System.out.println("Tear Down Method Executed");
 		if(sc.isFailed()==true)
 		{
@@ -257,7 +257,7 @@ public class StepDef extends BaseClass {
 			FileUtils.copyFile(srcFile, destFile);
 		}
 		driver.quit();
-	}
+	}*/
 /*@AfterStep
 public void afterSetpMethod()
 {
@@ -270,5 +270,11 @@ public void beforeStepMethod()
 	System.out.println("This is before step .......................");
 }
 */
-	
+	@AfterStep
+	public void addScreenshot(Scenario scenario) {
+		if (scenario.isFailed()) {
+			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(screenshot, "image/png", scenario.getName());
+		}
+	}
 }

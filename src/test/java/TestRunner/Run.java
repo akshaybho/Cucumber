@@ -16,7 +16,8 @@ import io.cucumber.junit.CucumberOptions;
 		//tags = "@sanity or @regression" - willl run sanity or regression
 		//tags = "@sanity and @regression" - will run sanity as well as regression both tags in one scenario
 		//tags = "@sanity and not @regression" - will run sanity not regression
-		plugin = {"pretty", "html:target/cucumber-reports/reports1.html"}
+		//plugin = {"pretty", "html:target/cucumber-reports/reports1.html"}
+		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 		)
 public class Run {
 
